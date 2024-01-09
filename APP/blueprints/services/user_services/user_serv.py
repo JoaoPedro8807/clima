@@ -20,7 +20,7 @@ def login_verify_user(email, password):
     else:
         return {
             "status": True,
-            "message": f"Login realizado com sucesso. Bem-vindo {_u.nome.title()}"
+            "message": f"Login realizado com sucesso. Bem-vindo"
         }
 
 
