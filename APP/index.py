@@ -12,6 +12,7 @@ configuration_migrate.init_migrate(app) #db já passei no própio arqv
 configuration_jwt.init_jwt(app)
 
 
+
 #views
 home_view.init_rotas_home(app)
 menu_view.init_rotas_menu(app)

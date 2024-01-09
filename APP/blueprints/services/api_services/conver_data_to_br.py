@@ -10,6 +10,7 @@ def format_data_hora_str(data_hora):
         data_h = datetime.strptime(data_hora, '%Y-%m-%d %H:%M:%S')
         data_h_string  = data_h.strftime('%d/%m/%Y %H:%M:%S')
         return data_h_string
+    #se não será do tipo datetime
     data_h_string = data_hora.strftime('%d/%m/%Y %H:%M:%S')
     return data_h_string
 

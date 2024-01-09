@@ -31,7 +31,7 @@ def get_id_current_cityDefault():
    request = requests.request("GET", URL_REQUEST)
    response = json.loads(request.text)
    id_city = response['locales'][0]
-   return str(id_city)
+   return (id_city)
 
 def verify_time_to_default_again(id_city):
    if verify_city_is_default(id_city):
