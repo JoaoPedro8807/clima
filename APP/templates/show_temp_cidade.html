@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CLIMA</title>
+    <link rel="stylesheet" href="/static/clima-style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="section-temp">
+    <h1 class="titulo">Tempo em <span class="badge rounded-pill bg-light text-dark">{{ dados['nome'].title() }}</span></h1>
+    <div class="container">
+         <div class="container-info">
+                    <ul class="container-ul">
+                <div class="container-info-data container-it">
+                        <li class="container-li"> CIDADE: {{dados['nome']}}</li>
+                        <li> ESTADO: {{dados['estado']}}</li>
+                        <li> PAIS: {{dados['pais']}}</li>
+
+                    </ul>
+                </div>
+
+
+                <div class="container-date">
+                    <div class="container-date-infos container-item">
+                        <ul class="container-date-infos-ul ">
+                            <li class="container-date-infos-li">DATA: {{ data_busc['data']  }}</li>
+                            <li class="container-date-infos-li">HORÁRIO: {{ data_busc['horario']  }} </li>
+
+                        </ul>
+                    </div>
+                </div>
+    </div>
+</div>
+
+<div class="container-datas">
+     <div class="container-data">
+                    <div class="container-data-infos container-item">
+                        <ul class="container-data-infos-ul">
+                            <li class="container-data-infos-li">Temperatura: <span class="badge rounded-pill bg-info text-dark">{{ results['temperature'] }}</span></li>
+                            <li class="container-data-infos-li">Sensação: <span class="badge rounded-pill bg-info text-dark">{{ results['sensation'] }}</span></li>
+                            <li class="container-data-infos-li">Velocidade do vento: <span class="badge rounded-pill bg-info text-dark">{{ results['wind_velocity'] }}</span></li>
+                            <li class="container-data-infos-li"> Humidade: <span class="badge rounded-pill bg-info text-dark">{{ results['humidity'] }}</span></li>
+                            <li class="container-data-infos-li">Condição do tempo: <span class="badge rounded-pill bg-secondary">{{ results['condition'] }}</span></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+</div>
+
+</section>
+</body>
+</html>
+
+
+
+
+
+

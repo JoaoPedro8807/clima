@@ -1,0 +1,71 @@
+:root{
+
+    --fonte1: Verdana, geneva, tahoma, sans-serif;
+    --fonte2: 'Roboto slab', serif;
+
+
+    --cor1: #0f0c29;
+    --cor2: #302b63;
+    --cor3: #24243e;
+    --cor4: rgba(250, 235, 215, 0.96);
+}
+
+
+body{
+    height: 100dvh;
+    background-image: linear-gradient(to right, var(--cor1), var(--cor2));
+    color: white;
+}
+.login-conteudo{
+    height: 80dvh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.form{
+  width: 50vw;
+}
+
+.form-item{
+
+}
+.form-control:focus, .form-control:active{
+    background-color: #200122;
+    color: white;
+}
+.form-control{
+    background-color: #200122;
+    color: white;
+}
+
+.send-button {
+    margin-top: 10vh;
+    background: none;
+    width: 100%;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 5vw;
+
+}
+
+.send-button:focus, .send-button:active{
+    background: #200122;
+}
+.error{
+    background-color: antiquewhite;
+    color: red;
+}
+.sucess{
+    background-color: rgba(48, 43, 99, 0.56);
+    color: white;
+
+}

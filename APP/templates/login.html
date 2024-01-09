@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/login-style.css">
+    <title>CLIMA</title>
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="" style="list-style: none">
+    {% for category, message in messages %}
+      <li>
+        <div class="alert alert-warning alert-dismissible fade show {{category}}" role="alert">
+            <strong>{{ category }}</strong> <p>{{ message }}</p>
+            <button type="button" class="btn-close {{category}}" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<main>
+    <section class="login-conteudo">
+        <div class="login-container">
+            <form class="form" action="{{url_for('login')}}" method="POST">
+                <div class="form-container">
+                   <div class="form-group form-item">
+                    <label for="exampleInputEmail1">Email do usuário</label>
+                    <input  name="user_email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome ou email do usuario">
+                  </div>
+                  <div class="form-group form-item">
+                    <label for="exampleInputPassword1">Senha</label>
+                    <input  name="user_pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha do usuário">
+                  </div>
+                  <button type="submit" class="send-button">Entrar</button>
+
+                  <button><a href="{{url_for('register')}}">Registrar-se</a></button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+</body>

@@ -1,0 +1,24 @@
+{% extends 'conteudo_template.html' %}
+    {% block content  %}
+<section class="section-cidade-conteudo">
+    <h1 class="titulo" >ESCOLHENDO CIDADE</h1>
+        <div class="conteudo">
+            <form action="{{ url_for('cidade') }}" method="POST">
+              <div class="mb-3">
+                <label for="cidade_input" class="form-label">Digite o nome da cidade</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cidade_input">
+                <div id="" class="form-text">Para uma pesquisa mais eficiente, digite o nome da cidade completo!</div>
+              </div>
+                  <button type="submit" class="btn service-pesquisar-link ">Pesquisar</button>
+            </form>
+            </div>
+        </div>
+</section>
+
+
+
+
+{% if cidades %}
+    {% include 'list_cidades.html' %}
+{% endif %}
+{% endblock content %}

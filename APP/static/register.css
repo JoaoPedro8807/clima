@@ -1,0 +1,40 @@
+:root{
+
+    --fonte1: Verdana, geneva, tahoma, sans-serif;
+    --fonte2: 'Roboto slab', serif;
+
+
+    --cor1: #0f0c29;
+    --cor2: #302b63;
+    --cor3: #24243e;
+    --cor4: rgba(250, 235, 215, 0.96);
+}
+
+
+body{
+    height: 100dvh;
+    background-image: linear-gradient(to right, var(--cor1), var(--cor2));
+    color: white;
+}
+
+
+.register-container{
+    display: flex;
+    flex-direction: column;
+    height: 80dvh;
+    align-items: center;
+    justify-content: center;
+
+}
+.register-form{
+    width: 50dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn-form-register{
+    margin-top: 8dvh;
+    color: white;
+    background-color: grey;
+}

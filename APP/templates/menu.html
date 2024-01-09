@@ -1,0 +1,63 @@
+{% extends 'conteudo_template.html' %}
+{% block content %}
+    <section class="menu-services-container">
+        <div class="service-item">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="">Buscar clima por cidade</h3>
+                    </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Uma vez por dia, pesquise uma cidade e sua previsão do clima</h5>
+                    <p class="card-text"></p>
+                    <a href="{{url_for('cidade')}}" class="btn service-pesquisar-link">PESQUISAR POR CIDADE</a>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Atual cidade padrão: <span class="badge bg-light text-dark show-data">{{ current_defaultCity['cidade'] }} ({{ current_defaultCity['estado'] }})</span>
+                     Tempo para setar outra cidade: <span class="badge bg-light text-dark show-data">{{ time_to_set_defaultCity }}</span>
+                  </div>
+                </div>
+            </div>
+
+
+        <div class="service-item">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="">Buscar por cidade (24 HORAS)</h3>
+                    </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Pesquise a previsão para as 24 horas do dia da cidade padrão
+                        <span class="badge bg-light text-dark show-data">{{ current_defaultCity['cidade'] }} ({{ current_defaultCity['estado'] }})</span>
+                    </h5>
+                    <p class="card-text"></p>
+                    <a href="{{url_for('clima24h', id_city=current_id_city)}}" class="btn service-pesquisar-link">PESQUISAR POR CIDADE 24H</a>
+                  </div>
+                  <div class="card-footer text-muted">
+
+                  </div>
+                </div>
+            </div>
+
+
+        <div class="service-item">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="">Pesquisar por região</h3>
+                    </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Pesquise a previsão para os próximos 3 dias em qualquer região do Brasil </h5>
+                    <p class="card-text"></p>
+                    <a href="{{ url_for('regiao') }}" class="btn service-pesquisar-link ">PESQUISAR POR REGIÃO</a>
+                  </div>
+                  <div class="card-footer text-muted">
+
+                  </div>
+                </div>
+            </div>
+
+
+
+    </section>
+
+
+
+{% endblock content%}

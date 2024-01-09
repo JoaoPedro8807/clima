@@ -1,0 +1,78 @@
+:root{
+
+    --fonte1: Verdana, geneva, tahoma, sans-serif;
+    --fonte2: 'Roboto slab', serif;
+
+
+    --cor1: #0f0c29;
+    --cor2: rgba(48, 43, 99, 0.34);
+    --cor3: #24243e;
+    --cor4: rgba(250, 235, 215, 0.96);
+}
+
+
+.main-template{
+    height: auto;
+}
+
+.section-temp{
+    width: 100vw;
+    background-image: url("./imagens/fundo-clima.jpg");
+    color: white;
+    height: 100dvh;
+}
+.container{
+    width: 100vw;
+    height: 70dvh;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.container-info{
+    display: flex;
+    align-items: flex-start;
+    font-size: .8rem;
+}
+
+.container ul {
+    list-style: none;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container-data-infos{
+    font-size: 1.5rem;
+}
+.container-date-infos{
+    font-size: .8rem;
+}
+
+.container-date {
+    display: flex;
+    align-items: flex-start;
+}
+.container-data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 3EM;
+    font-weight: bolder;
+}
+
+
+.error{
+    background-color: antiquewhite;
+    color: red;
+}
+.sucess{
+    background-color: rgba(48, 43, 99, 0.56);
+    color: white;
+
+}
+

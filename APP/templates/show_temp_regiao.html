@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CLIMA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/clima-style.css">
+</head>
+    <h1 style="text-align: center"> Previsão do clima para os próximos 3 dias no {{ regiao}} ({{tag}})</h1>
+<section class="regiao-container">
+    <div class="container-regiao">
+        <div class="datas-regiao">
+                 <p>
+          <a class="btn" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">{{ results[0].date_br }}</a>
+          <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"> {{ results[1].date_br }}</button>
+          <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample2"> {{ results[2].date_br }}</button>
+          <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Previsão para o dia os 3 dias</button>
+        </p>
+        </div>
+        <div class="row regiao-card">
+          <div class="col regiao-card-item">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <div class="card card-body regiao-clima-fundo">
+                  <p class="mapa-text">Mapa com a previsão do clima para o dia {{ results[0].date_br }}</p>
+                  <img src="{{results[0].image}}" alt="Imagem do primeiro dia">
+              </div>
+            </div>
+          </div>
+          <div class="col regiao-card-item">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+              <div class="card card-body regiao-clima-fundo">
+                <p class="mapa-text">Mapa com a previsão do clima para o dia {{ results[1].date_br }} </p>
+                <img src="{{results[1].image}}" alt="Imagem do segundo dia">
+              </div>
+            </div>
+          </div>
+            <div class="col regiao-card-item">
+            <div class="collapse multi-collapse" id="multiCollapseExample3">
+              <div class="card card-body regiao-clima-fundo">
+                <p class="mapa-text">Mapa com a previsão do clima para o dia  {{ results[2].date_br }}</p>
+                <img src="{{results[2].image}}" alt="Imagem do terceiro dia">
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+</section>
+<body>

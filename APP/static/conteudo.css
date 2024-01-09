@@ -1,0 +1,127 @@
+:root{
+
+    --fonte1: Verdana, geneva, tahoma, sans-serif;
+    --fonte2: 'Roboto slab', serif;
+
+
+    --cor1: #0f0c29;
+    --cor2: #302b63;
+    --cor3: #24243e;
+    --cor4: rgba(250, 235, 215, 0.96);
+}
+
+body{
+    height: 100dvh;
+    background-image: linear-gradient(to right, var(--cor1), var(--cor2));
+    color: white;
+}
+
+.sucess{
+    background-color: antiquewhite;
+    color: var(--cor3);
+}
+
+.titulo{
+    text-align: center;
+}
+
+.header-container{
+    display: flex;
+}
+
+.offcanvas-header{
+    color: white;
+    background-color: var(--cor3);
+}
+.user_info {
+    background-color: floralwhite;
+    color: black;
+}
+
+.offcanvas-body{
+    background-color: var(--cor4);
+    color: black;
+    list-style: none;
+}
+.offcanvas-ul{
+    list-style: none;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.show-data{
+    font-size: 1em;
+    color: black;
+}
+.menu-services-container{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: black;
+}
+.service-item{
+    margin: 20px;
+    width: auto;
+
+}
+.card{
+    width: 70vw;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.service-pesquisar-link{
+    background-color: var(--cor3);
+    color: white;
+}
+.btn:hover{
+    background-color: rgba(36, 36, 62, 0.78);
+    color: white;
+}
+
+.section-cidade-conteudo{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50dvh;
+    justify-content: space-around;
+
+}
+
+.form-control{
+    background-color: #200122;
+    color: white;
+}
+.form-control:focus{
+    background-color: rgba(32, 1, 34, 0.84);
+    color: white;
+}
+
+.section-list-cidades-encontradas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cidade-list{
+    width: 50vw;
+}
+.table-list-cidades{
+    color: white;
+}
+
+.error{
+    background-color: antiquewhite;
+    color: red;
+}
+.sucess{
+    background-color: rgba(48, 43, 99, 0.56);
+    color: white;
+
+}
+
+

@@ -1,0 +1,37 @@
+
+<link rel="stylesheet" href="../static/conteudo.css">
+<section class="section-list-cidades-encontradas">
+    <div class="cidade-list">
+        <h1 class="titulo">Cidades encontradas: {{ len_cidades }}</h1>
+        <div class="results">
+          <table class="table table-list-cidades">
+              <thead class="list-item">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="list-item">
+              {% for cidade in cidades %}
+                <tr>
+                  <th scope="row"></th>
+                  <td>{{ cidade['nome'] }}</td>
+                  <td>{{ cidade['estado'] }}</td>
+                  <td>
+                      <button type="button" class="btn btn-success">
+                        <a style="text-decoration: none; color:black"  href="{{url_for('clima', id_city=cidade['id'])}}">Pesquisar</a>
+                      </button>
+                  </td>
+
+                </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+</section>
+
+
