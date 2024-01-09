@@ -24,7 +24,7 @@ def init_rotas_home(app):
                 login_user(
                     user,
                     remember=False,
-                    duration=timedelta(minutes=10))
+                    duration=timedelta(minutes=60))
 
 
                 flash(f'{iuser['message']}', category='sucess')

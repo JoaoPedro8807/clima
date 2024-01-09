@@ -9,9 +9,11 @@ def init_rotas_menu(app):
     def menu():
         user = {
             "id": current_user.id,
-            "nome": current_user.nome,
             "email": current_user.email,
-            "admin": current_user.is_admin,
+            "is_admin": current_user.is_admin,
+            "namee": current_user.nome,
+            "data_criacao": current_user.data_criacao
+
         }
 
         time_to_set_defaultCity = city_is_default.verify_time_to_default_again(city_is_default.get_id_current_cityDefault()) #verificar o tempo p/ definir dnv passando o id da cidade default
