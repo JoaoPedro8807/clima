@@ -26,7 +26,7 @@ Um APP que buscar através da [API  ClimaTempo](https://www.dropbox.com/develope
 - Ainda não tive tempo para colocar um tratamento para erros nas requisições da API, por isso pode ser aconteça alguns erros durante essas requisições
 
 
-## ✔️ Técnicas e tecnologias utilizadas
+## ✔️ Tecnologias utilizadas
 
 - ``Flask``
 - ``HTML + CSS + BOOTSTRAP``
