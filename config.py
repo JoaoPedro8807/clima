@@ -4,7 +4,7 @@ SESSION_TYPE = 'filesystem'
 
 
 USERNAME = 'root'
-PASSWORD = 'hack00hack'
+PASSWORD = ''
 SERVER = 'localhost'
 DB = 'clima'
 
