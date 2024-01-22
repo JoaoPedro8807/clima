@@ -5,7 +5,8 @@
 <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge">
 </p>
 
-Um APP que buscar através da [API  ClimaTempo](https://www.dropbox.com/developers/documentation/http/documentation) previsões para o clima de qualquer uma cidade ou região de todo o Brasil utilizando Flask  
+Um APP que buscar através da [API  ClimaTempo](https://www.dropbox.com/developers/documentation/http/documentation) previsões para o clima de qualquer uma cidade ou região de todo o Brasil utilizando Flask.
+### Deploy da APP: https://clima-8ba6fda2cfe4.herokuapp.com/
 
 # 🔨 Funcionalidades do projeto:
 
