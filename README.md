@@ -10,11 +10,11 @@ Um APP que buscar através da [API  ClimaTempo](https://www.dropbox.com/develope
 
 # 🔨 Funcionalidades do projeto:
 
-### - `Funcionalidade 1`:  Pesquisar a temperatura e o clima atual de uma cidade, desde que a mesma tenha sido definida como padrão. (como usei API gratuita, só é possível definir uma cidade padrão por dia)
+### - ` 1`:  Pesquisar a temperatura e o clima atual de uma cidade, desde que a mesma tenha sido definida como padrão. (como usei API gratuita, só é possível definir uma cidade padrão por dia)
 
-### - `Funcionalidade 2`:  Pesquisar a previsão de todos os horário do dia para a determinada cidade padrão
+### - ` 2`:  Pesquisar a previsão de todos os horário do dia para a determinada cidade padrão
 
-### - `Funcionalidade 3`: Pesquisar a previsão para os próximos 3 dias de uma determinada região do Brasil (está região não precisa ser padrão, podemos pesquisar sem limitações)
+### - ` 3`: Pesquisar a previsão para os próximos 3 dias de uma determinada região do Brasil (está região não precisa ser padrão, podemos pesquisar sem limitações)
 
 ### - `EXTRA:`: O APP também conta com login e autenticação de usuários, e administradores (que podemos editar e excluir qualquer usuário).
 
