@@ -8,7 +8,6 @@ window.onclick = function(event){
             e.style.display =  "none";
     }
     })
-
 }
 
 cancelBtn.forEach(botao =>{
