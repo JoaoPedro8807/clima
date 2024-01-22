@@ -3,7 +3,7 @@ from APP.extensoes.configuration_db import db
 from flask_login import UserMixin
 from APP.extensoes.configuration_login import login_manager
 from passlib.hash import pbkdf2_sha256
-from sqlalchemy.sql import func #biblioteca para o banco capturar a hora de criação da linha. É melhor capturar no banco do q no cliente
+from sqlalchemy.sql import func #biblioteca que capturar a hora de criação da linha no banco. É melhor capturar no banco
 class Usuario(UserMixin, db.Model): #UserMixin biblioteca para o flask_login reconhecer o model aonde está as credencias de login e conseguir interagir
     __tablename__ = 'usuario'
 

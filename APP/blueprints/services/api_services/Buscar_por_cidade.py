@@ -20,8 +20,7 @@ def find_id_city(city_name):
     return c #escolher quais das cidades encontradas na API é a correta, depois passar para find_data_locale
 
 
-def set_city_default(id_city): #set default city one change for day.
-    #id_bauru = '6655'  # dinamizar
+def set_city_default(id_city): #1 mudança por dia.
     url_request = f'http://apiadvisor.climatempo.com.br/api-manager/user-token/{API_TOKEN}/locales'
     payload = f'localeId[]={str(id_city).strip()}'
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -30,7 +29,7 @@ def set_city_default(id_city): #set default city one change for day.
     return r
 
 
-def find_data_locale(id_city): #metodo para pesquisar dados de uma ciddade já autorizada na api (aplicar um decorator)
+def find_data_locale(id_city): #pesquisar dados de uma ciddade já autorizada na api
     url_request = f'http://apiadvisor.climatempo.com.br/api/v1/weather/locale/{str(id_city)}/current?token={API_TOKEN}'
     response = requests.request("GET", url_request)
     r = json.loads(response.text)

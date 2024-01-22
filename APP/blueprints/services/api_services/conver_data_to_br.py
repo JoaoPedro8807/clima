@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 def format_data(data):
-    date = datetime.strptime(data, '%Y-%m-%d').date() # 'p' = parse (tornar em um objeto datetime) passando o formato que já vem na string
-    date_format = date.strftime('%d/%m/%y') # 'f' format (formatar o objeto datetime de acordo com o o segundo parâmetro
+    date = datetime.strptime(data, '%Y-%m-%d').date() # 'p'de  parse (tornar em um objeto datetime) passando o formato que já vem na string
+    date_format = date.strftime('%d/%m/%y') # 'f'  de format
     return date_format
 
 

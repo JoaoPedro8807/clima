@@ -62,7 +62,7 @@ def init_rotas_user(app):
 
             if update['status'] == True:
                 if _admin:
-                    user_serv.add_new_userRole(id_user=old_user.id, id_role=1)#adicionando mais um admin na tabela de roles!
+                    user_serv.add_new_userRole(id_user=old_user.id, id_role=1)#adicionando mais um admin na tabela user_roles!
                 flash(update['message'])
                 return redirect(url_for('list_user'))
             else:

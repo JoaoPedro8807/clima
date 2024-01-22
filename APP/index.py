@@ -21,7 +21,7 @@ user_view.init_rotas_user(app)
 configuration_login.init_login_mangager(app)
 
 
-#session -> Essa session é biblioteca para guardar dados em cookie no navegador, não é a do própio flask
+#session -> Libary
 configuration_session.init_session(app)
 
 from APP.models import user_model

@@ -21,8 +21,9 @@ def update_user(old_user, new_user):
         }
 def login_verify_user(email, password):
     _user = get_user_by_email(email)
+    _p = user_model.Usuario.query.filter_by(email=email).first()
 
-    if not _user:
+    if not _user or not _p.verify_senha(password):
         return {
             "status": False,
             "message": "Usuário ou senha estão incorretos!"
@@ -41,11 +42,6 @@ def add_new_userRole(id_user,id_role):
     userRole = user_model.UserRole(user_id=id_user, role_id=id_role)
     db.session.add(userRole)
     db.session.commit()
-
-def get_role_name_by_role(role):
-    ...
-
-
 
 
 def get_name_by_email(email):

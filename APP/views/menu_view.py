@@ -1,11 +1,11 @@
 from flask import render_template, session
 from APP.blueprints.services.api_services import city_is_default, conver_data_to_br
-from flask_login import login_required, user_accessed, current_user
+from flask_login import login_required, current_user
 
 
 def init_rotas_menu(app):
     @app.route('/menu')
-    @login_required #decorator do flask_login, basicamente usa o session para controlar o acesso a determinadas  rotas
+    @login_required # flask-login decorator
     def menu():
         user = {
             "id": current_user.id,
