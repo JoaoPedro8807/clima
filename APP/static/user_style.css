@@ -1,0 +1,117 @@
+:root{
+
+    --fonte1: Verdana, geneva, tahoma, sans-serif;
+    --fonte2: 'Roboto slab', serif;
+
+
+    --cor1: #0f0c29;
+    --cor2: #302b63;
+    --cor3: #24243e;
+    --cor4: rgba(250, 235, 215, 0.96);
+}
+
+
+
+.editar_link{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.3em;
+}
+
+.excluir-link{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3em;
+}
+
+.adm_item{
+    color: green;
+}
+.list-titulo{
+    margin-bottom: 50px;
+}
+
+
+
+
+
+* {box-sizing: border-box}
+
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+.deletebtn {
+  background-color: #f44336;
+}
+
+.container-confirm {
+  padding: 16px;
+  text-align: center;
+  height: 70dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-image: linear-gradient(to right, var(--cor2), var(--cor3));
+}
+.modal-content {
+  background-color: #fefefe;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+    font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.delete-user-msg{
+  font-size: 1.5em;
+}

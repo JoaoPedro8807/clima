@@ -26,7 +26,7 @@ class Usuario():
         return self._password
 
     @password.setter
-    def nome(self, password):
+    def password(self, password):
         self._password = password
 
     @property

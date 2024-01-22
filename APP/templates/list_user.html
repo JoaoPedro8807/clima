@@ -1,0 +1,53 @@
+{% extends 'conteudo_template.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/user_style.css">
+<body>
+<h1 align="center" class="list-titulo">Lista de usuários:</h1>
+<div class="table-container">
+    <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Data de criação</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+    <tr>
+      <th scope="row">{{ users.index(u) + 1 }}</th>
+      <td>{{ u.nome }} {% if  u.is_admin %} <b class="adm_item"> ☆ </b> {% endif %}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.create_at }}</td>
+        <td><span class="badge rounded-pill bg-warning text-dark"><a href="{{url_for('edit_user', id=u.id)}}" class="editar_link">Editar</a></span></td>
+        <td><span class="badge rounded-pill bg-danger"><a class="excluir-link" onclick="document.getElementById('confirm_{{users.index(u)}}').style.display='block'">Excluir</a></span>
+        <td></td>
+    </tr>
+     <div id="confirm_{{ users.index(u) }}" class="modal confirm">
+              <span onclick="document.getElementById('confirm_{{ users.index(u) }}').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <form class="modal-content" action="{{url_for('delete_user', id=u.id)}}" name="confirm-form" method="POST" >
+                <div class="container-confirm">
+                  <h1>Deletar conta</h1>
+                  <p class="delete-user-msg">Tem certeza que deseja deletar a conta  <span class="badge bg-light text-dark show-data name-delete"> {{ u.nome }} ?</span></p>
+                  <div class="clearfix">
+                    <button type="button" class="cancelbtn" id="cancelBtn">Cancelar</button>
+                    <button type="submit" class="deletebtn">Deletar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+
+</div>
+<script src="../static/js/list_user.js"></script>
+</body>
+</html>
+{% endblock content %}

@@ -17,8 +17,6 @@ def get_temperatura(offset=0, per_page=4):
 user = current_user
 
 def init_rotas_recursos(app):
-
-
     @app.route('/cidade', methods=['GET', 'POST'])
     @login_required
     def cidade():
@@ -27,7 +25,6 @@ def init_rotas_recursos(app):
             cidades = Buscar_por_cidade.find_id_city(cidade_input)
             return render_template('escolher_cidade.html', cidades=cidades, len_cidades=len(cidades), user=user, current_defaultCity=current_defaultCity, current_id_default_city=current_id_default_city)
         return render_template('escolher_cidade.html', user=user, current_defaultCity= current_defaultCity, current_id_default_city=current_id_default_city)
-
 
 
     @app.route('/cidade/<int:id_city>/clima')
@@ -49,7 +46,6 @@ def init_rotas_recursos(app):
               f'Você pode definir uma nova cidade padrão em: {time}', 'error')
         return redirect(url_for('cidade'))
 
-
     @app.route('/cidade/<int:id_city>/clima24h')
     @login_required
     def clima24h(id_city):
@@ -68,13 +64,10 @@ def init_rotas_recursos(app):
 
         return render_template('show_temp_24h_city.html', offset=offset, itens=pagination_temperaturas, pagination=pagination)
 
-
-
     @app.route('/regiao')
     @login_required
     def regiao():
         return render_template('escolher_regiao.html', user=user, current_defaultCity=current_defaultCity, current_id_default_city=current_id_default_city)
-
 
     @app.route('/regiao/clima', methods=('GET', 'POST'))
     @login_required

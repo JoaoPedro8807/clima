@@ -124,4 +124,10 @@ body{
 
 }
 
+.home_link{
+    font-family: "ui-sans-serif";
+    width: 15dvw;
+    text-align: center;
+    font-size: 2em;
 
+}

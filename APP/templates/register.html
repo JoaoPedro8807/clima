@@ -15,21 +15,34 @@
     <form class="register-form" action="{{url_for('registrar')}}" method="POST">
         <div class="mb-3">
           <label for="formGroupExampleInput" class="form-label">Nome:</label>
-          <input name="register_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+          <input name="register_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o seu nome" required>
         </div>
         <div class="mb-3">
           <label for="formGroupExampleInput2" class="form-label">Email</label>
-          <input name="register_email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+          <input name="register_email" type="email" class="form-control" id="formGroupExampleInput2" placeholder="Digite seu email" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Digite um email válido!">
+            <div id="message_email" style="display: none" class="patters-form">
+              <p id="message_email_p" class="invalid"><b></b></p>
+            </div>
         </div>
         <div class="mb-3">
-          <label for="formGroupExampleInput2" class="form-label">Senha</label>
-          <input name="register_senha" type="password" class="form-control" id="formGroupExampleInput3" placeholder="Letras e números">
+          <label for="formGroupExampleInput3" class="form-label">Senha</label>
+          <input name="register_senha" type="password" class="form-control" id="formGroupExampleInput3" placeholder="Digite sua senha:" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="O campo contém caracteres inválidos, por favor, escolha uma senha conforme os requisitos" >
+        </div>
+        <div id="message" style="display: none" class="patters-form">
+              <h3>A senha precisa ter:</h3>
+              <p id="lower" class="invalid">Uma <b>Letra minúscula</b></p>
+              <p id="upper" class="invalid">Uma <b>Letra Maiúscula</b></p>
+              <p id="number" class="invalid">Um <b>Número</b></p>
+              <p id="length" class="invalid">Mínimo <b>de 8 a 30 caracteres</b></p>
         </div>
 
         <button class="btn btn-form-register" type="submit">Enviar</button>
     </form>
 
+
+
 </section>
 
 </body>
+<script src="../static/js/login.js"></script>
 </html>

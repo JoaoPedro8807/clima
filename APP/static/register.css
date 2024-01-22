@@ -38,3 +38,26 @@ body{
     color: white;
     background-color: grey;
 }
+
+.patters-form{
+
+}
+
+.invalid {
+  color: red;
+}
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}

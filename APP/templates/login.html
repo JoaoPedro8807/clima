@@ -23,23 +23,23 @@
   {% endif %}
 {% endwith %}
 <main>
+    <h1 align="center">APP CLIMA</h1>
     <section class="login-conteudo">
         <div class="login-container">
             <form class="form" action="{{url_for('login')}}" method="POST">
                 <div class="form-container">
                    <div class="form-group form-item">
                     <label for="exampleInputEmail1">Email do usuário</label>
-                    <input  name="user_email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome ou email do usuario">
+                    <input  name="user_email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome ou email do usuario" required>
                   </div>
                   <div class="form-group form-item">
                     <label for="exampleInputPassword1">Senha</label>
-                    <input  name="user_pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha do usuário">
+                    <input  name="user_pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha do usuário" required>
                   </div>
                   <button type="submit" class="send-button">Entrar</button>
-
-                  <button><a href="{{url_for('register')}}">Registrar-se</a></button>
                 </div>
             </form>
+            <button class="send-button"><a style="text-decoration: none; color: white" href="{{url_for('register')}}">Registrar-se</a></button>
         </div>
     </section>
 </main>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/register.css">
+
+</head>
+<body>
+    <h1 style="text-align: center">Editando <span class="badge rounded-pill bg-secondary">{{ user.nome }}</span></h1>
+
+<section class="register-container">
+    <form class="register-form" action="{{url_for('update_user')}}" method="POST">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Nome:</label>
+          <input name="register_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ user.nome }}" required>
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Email</label>
+          <input name="register_email" type="text" class="form-control" id="formGroupExampleInput2" value="{{user.email}}"  readonly>
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput3" class="form-label">Senha</label>
+          <input name="register_senha" type="password" class="form-control" id="formGroupExampleInput3" placeholder="Digite sua senha:" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="O campo contém caracteres inválidos, por favor, escolha uma senha conforme os requisitos" >
+        </div>
+        <div id="message" style="display: none" class="patters-form">
+              <h3>A nova senha precisa ter:</h3>
+              <p id="lower" class="invalid">Uma <b>Letra minúscula</b></p>
+              <p id="upper" class="invalid">Uma <b>Letra Maiúscula</b></p>
+              <p id="number" class="invalid">Um <b>Número</b></p>
+              <p id="length" class="invalid">Mínimo <b>de 8 a 30 caracteres</b></p>
+        </div>
+        <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="register_admin">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Definir usuário como admin</label>
+            </div>
+        </div>
+
+        <button class="btn btn-form-register" type="submit">Editar</button>
+    </form>
+
+</section>
+</body>
+<script src="/static/js/login.js"></script>
+</html>

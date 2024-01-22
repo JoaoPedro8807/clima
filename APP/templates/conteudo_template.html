@@ -27,7 +27,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{url_for('menu')}}">CLIMA</a>
+      <a class="navbar-brand home_link" href="{{url_for('menu')}}">CLIMA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,7 +37,7 @@
               <p class="nav-link active" aria-current="page" href="">Atual cidade padrão: <span class="badge bg-light text-dark show-data">{{current_defaultCity.cidade}} ({{current_defaultCity.estado}})</span></p>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">Sobre</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('list_user')}}">Usuários cadastrados</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="https://advisor.climatempo.com.br" target="_blank" blink >API</a>
@@ -48,9 +48,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li class=""><a class="dropdown-item" href="">Instagram</a></li>
-              <li><a class="dropdown-item" href="">Youtube</a></li>
-              <li><a class="dropdown-item" href="">WhatsApp</a></li>
-              <li><a class="dropdown-item" href="">GitHub</a></li>
+              <li><a class="dropdown-item" href="https://github.com/JoaoPedro8807" target="_blank">GitHub</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="">MAIS</a></li>
             </ul>
@@ -61,21 +59,27 @@
             <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Usuário</button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                   <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">Informações de usuário</h5>
+                    <h5 id="offcanvasRightLabel">Informações de <span class="badge bg-light text-dark show-data">{{ user.nome }}</span></h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
                 <div class="offcanvas-body">
                     <ul class="offcanvas-ul">
-                        <li>Email cadadstrado: <span class="badge bg-light text-dark show-data">{{ user.email }}</span></li>
+                        <li>Email cadastrado: <span class="badge bg-light text-dark show-data">{{ user.email }}</span></li>
                         <li>Número de cadastro: <span class="badge bg-light text-dark show-data">{{ user.id }}</span></li>
-                        <li>Data de criação: <span class="badge bg-light text-dark show-data">{{ user.criacao }}</span></li>
+                        <li>Data de criação: <span class="badge bg-light text-dark show-data">{{ user.data_criacao }}</span></li>
 
 
 
-                        {% if user.is_admin %}
-                            <li><span class="badge bg-light text-dark">Permissão de ADM</span></li>
-                        {% endif%}
-                        <button><a href="{{url_for('logout')}}">DESLOGAR</a></button>
+
+                            <li><span>Permissão de: </span></li>
+                             {% for role in user.roles %}
+                                <ul style="list-style: none">
+                                    <li><p>{{ user.roles.index(role) + 1}}: <span style="font-size: 1.2em" class="badge bg-success">{{ role }}</span></p></li>
+                                </ul>
+
+                            {% endfor %}
+
+                         <span class="badge bg-light text-dark show-data"><a href="{{url_for('logout')}}">DESLOGAR</a></span>
                     </ul>
 
                 </div>

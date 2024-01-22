@@ -1,13 +1,9 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, current_app, session
 from APP.blueprints.services.user_services import user_serv
 from APP.entidades import user
 from datetime import timedelta
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 def init_rotas_home(app):
-
-    API_TOKEN = '8f3c01212174df7c569441a5c42a55a7'
-    LOC_URL = 'http://apiadvisor.climatempo.com.br/api/v1/anl/synoptic/locale/BR?token=your-app-token'
-
     @app.route('/')
     def index():
         return render_template('login.html')
@@ -17,29 +13,32 @@ def init_rotas_home(app):
         if request.method == 'POST':
             _user = str(request.form['user_email']).strip()
             _pass = str(request.form['user_pass']).strip()
-            iuser = user_serv.login_verify_user(email=_user, password=_pass)
 
-            if iuser['status'] == True: #login sucessful
+            iUser = user_serv.login_verify_user(email=_user, password=_pass)
+            if iUser['status'] == True:
                 user = user_serv.get_user_by_email(_user)
+                if user_serv.is_admin(user.id):
+                    session['rules'] = 'admin'
+                else:
+                    session['rules'] = 'user'
+                session.permanent = True
+
                 login_user(
                     user,
                     remember=False,
                     duration=timedelta(minutes=60))
 
-
-                flash(f'{iuser['message']}', category='sucess')
+                flash(f'{iUser['message']}', category='sucess')
                 return redirect(url_for('menu'))
 
             else:
-                flash(f'{iuser['error']}', category='error')
+                flash(f'{iUser['message']}', category='error')
                 return redirect(url_for('index'))
+
 
     @app.route('/register', methods=['POST', 'GET'])
     def register():
-
         return render_template('register.html')
-
-
 
     @app.route('/registrar', methods=['POST'])
     def registrar():
@@ -47,7 +46,6 @@ def init_rotas_home(app):
             _nome = str(request.form.get('register_name')).strip()
             _email = str(request.form.get('register_email')).strip()
             _senha = str(request.form.get('register_senha')).strip()
-
             _user = user.Usuario(
                 nome=_nome,
                 email=_email,
@@ -61,6 +59,7 @@ def init_rotas_home(app):
     @app.route('/logout', methods=['GET'])
     @login_required
     def logout():
+        session.pop('rules', default=None)
         logout_user()
         return redirect(url_for('index'))
 

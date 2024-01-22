@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, session
 from APP.blueprints.services.api_services import city_is_default, conver_data_to_br
 from flask_login import login_required, user_accessed, current_user
 
@@ -9,12 +9,14 @@ def init_rotas_menu(app):
     def menu():
         user = {
             "id": current_user.id,
+            "nome": current_user.nome,
             "email": current_user.email,
-            "is_admin": current_user.is_admin,
-            "namee": current_user.nome,
-            "data_criacao": current_user.data_criacao
-
+            "is_admin": bool(session.get('rules') == 'admin'),
+            "data_criacao": conver_data_to_br.format_data_hora_str(current_user.create_at),
+            "roles": []
         }
+        for role in current_user.roles:
+            user['roles'].append(role.nome)
 
         time_to_set_defaultCity = city_is_default.verify_time_to_default_again(city_is_default.get_id_current_cityDefault()) #verificar o tempo p/ definir dnv passando o id da cidade default
         current_defaultCity = city_is_default.get_name_current_cityDefault()
