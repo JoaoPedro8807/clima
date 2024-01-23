@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="clima@localhost" uuid="58fde9f1-d262-49f5-b23b-a22e882c2a2a">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="d94l6u8al1ivgo@ec2-44-215-1-253.compute-1.amazonaws.com" uuid="f8deecca-8976-4b49-afeb-e9546318e39e">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/clima</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-44-215-1-253.compute-1.amazonaws.com:5432/d94l6u8al1ivgo</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

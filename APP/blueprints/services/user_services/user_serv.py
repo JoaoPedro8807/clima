@@ -1,10 +1,13 @@
+import datetime
+
 from APP.entidades.user import Usuario
 from APP.models import user_model
 from APP.extensoes.configuration_db import db
+from datetime import datetime
 
 def create_user(user):
     if isinstance(user, Usuario):
-        user_bd = user_model.Usuario(nome=user.nome, email=user.email, password=user.password, is_admin=user.is_admin)
+        user_bd = user_model.Usuario(nome=user.nome, email=user.email, password=user.password, is_admin=user.is_admin, create_at=datetime.now())
         user_bd.criptografar_senha()
         db.session.add(user_bd)
         db.session.commit()
