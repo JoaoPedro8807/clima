@@ -9,5 +9,5 @@ SERVER = 'localhost'
 DB = 'clima'
 
 #SQLALCHEMY_DATABASE_URI = f'mysql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
-SQLALCHEMY_DATABASE_URI = 'postgresql://lurdvyzivwkcye:b4ed321845923411b900c0cf65885899cdc0013bd0ef443f41ee7e200eee35c0@ec2-44-214-132-149.compute-1.amazonaws.com:5432/d7kuvugbau0rtv'
+SQLALCHEMY_DATABASE_URI = 'postgres://sdbtqghohasdbs:593a3731f5e933150197aab8a808866f5f193d42eb95493cdd8bd0eb85798fd0@ec2-44-215-1-253.compute-1.amazonaws.com:5432/d94l6u8al1ivgo'
 
