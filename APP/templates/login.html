@@ -23,24 +23,38 @@
   {% endif %}
 {% endwith %}
 <main>
-    <h1 align="center">APP CLIMA</h1>
     <section class="login-conteudo">
-        <div class="login-container">
-            <form class="form" action="{{url_for('login')}}" method="POST">
-                <div class="form-container">
-                   <div class="form-group form-item">
-                    <label for="exampleInputEmail1">Email do usuário</label>
-                    <input  name="user_email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome ou email do usuario" required>
-                  </div>
-                  <div class="form-group form-item">
-                    <label for="exampleInputPassword1">Senha</label>
-                    <input  name="user_pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha do usuário" required>
-                  </div>
-                  <button type="submit" class="send-button">Entrar</button>
+        <div class="conteudo-container">
+            <div class="app-container">
+                <div class="app-fundo">
+                    <h1>APP CLIMA</h1> <br>
+                    <p>by: <a href="https://github.com/JoaoPedro8807" target="_blank" style="text-decoration: none; color: white; font-size: 1.3em">João Pedro</a></p>
                 </div>
-            </form>
-            <button class="send-button"><a style="text-decoration: none; color: white" href="{{url_for('register')}}">Registrar-se</a></button>
-        </div>
+            </div>
+
+
+            <div class="login">
+                <div class="login-fundo">
+                    <div class="login-container">
+                    <h3 style="font-size: 3em">LOGIN</h3>
+                    <form class="form" action="{{url_for('login')}}" method="POST">
+                        <div class="form-container">
+                           <div class="form-group form-item">
+                            <label for="exampleInputEmail1" class="label-email">Email do usuário</label>
+                            <input  name="user_email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome ou email do usuário" required>
+                          </div>
+                          <div class="form-group form-item">
+                            <label for="exampleInputPassword1" class="label-senha">Senha</label>
+                            <input  name="user_pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha do usuário" required>
+                          </div>
+                          <button type="submit" class="send-button">Entrar</button>
+                        </div>
+                    </form>
+                    <button class="send-button"><a style="text-decoration: none; color: white" href="{{url_for('register')}}">Registrar-se</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 </main>
 </body>

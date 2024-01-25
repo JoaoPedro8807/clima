@@ -16,35 +16,46 @@ body{
     background-image: linear-gradient(to right, var(--cor1), var(--cor2));
     color: white;
 }
+
+
+
 .login-conteudo{
-    height: 80dvh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: space-around;
+
 }
 .login-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
 
 
 }
 .form{
   width: 50vw;
+    margin-top: 10dvh;
 }
 
 .form-item{
 
 }
 .form-control:focus, .form-control:active{
-    background-color: #200122;
+    background-color: black;
     color: white;
 }
 .form-control{
-    background-color: #200122;
-    color: white;
+    background-color: white;
+    color: black;
 }
+.label-email, .label-senha{
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    color: var(--cor1);
+}
+
 
 .send-button {
     margin-top: 5vh;
@@ -56,11 +67,12 @@ body{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 50px;
-
+    border-color: black;
 }
 
-.send-button:focus, .send-button:active{
-    background: #200122;
+.send-button:hover{
+    background: var(--cor3);
+    box-shadow: 1px;
 }
 .error{
     background-color: antiquewhite;
@@ -69,5 +81,56 @@ body{
 .sucess{
     background-color: rgba(48, 43, 99, 0.56);
     color: white;
+}
+.conteudo-container{
+    height: 80dvh;
+    width: 80dvw;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px;
+    border: 2px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 
+}
+.app-container{
+    width: 100dvw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: lightslategray;
+    color: white;
+}
+.login-fundo{
+    height: 100%;
+    width: 100%;
+    background-color: lightslategray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 50px;
+
+}
+
+.login{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: linear-gradient(to right, var(--cor1), var(--cor2));
+    border-top-right-radius: 10px;
+}
+.app-fundo{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to left, var(--cor1), var(--cor2));
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top-right-radius: 50px;
+    flex-direction: column;
+    flex-wrap: wrap;
 }

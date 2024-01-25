@@ -1,12 +1,10 @@
-import datetime
-
+import pytz
 from APP.entidades.user import Usuario
 from APP.models import user_model
 from APP.extensoes.configuration_db import db
-from datetime import datetime
-from pytz import timezone
+from datetime import datetime, timezone, timedelta
 
-fuso = timezone('America/Sao_Paulo')
+fuso = timezone(timedelta(hours=-3))
 def create_user(user):
     if isinstance(user, Usuario):
         user_bd = user_model.Usuario(nome=user.nome, email=user.email, password=user.password, is_admin=user.is_admin, create_at=datetime.now().astimezone(fuso))
