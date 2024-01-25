@@ -16,10 +16,11 @@
 
     </tr>
   </thead>
+    {{ pagination.info }}
   <tbody>
     {% for u in users %}
     <tr>
-      <th scope="row">{{ users.index(u) + 1 }}</th>
+      <th scope="row">{{ loop.index + pagination.skip  }}</th>
       <td>{{ u.nome }} {% if  u.is_admin %} <b class="adm_item"> ☆ </b> {% endif %}</td>
       <td>{{ u.email }}</td>
       <td>{{ u.create_at }}</td>
@@ -29,7 +30,7 @@
     </tr>
      <div id="confirm_{{ users.index(u) }}" class="modal confirm">
               <span onclick="document.getElementById('confirm_{{ users.index(u) }}').style.display='none'" class="close" title="Close Modal">&times;</span>
-                            <form class="modal-content" action="{{url_for('delete_user', id=u.id)}}" name="confirm-form" method="POST" >
+              <form class="modal-content" action="{{url_for('delete_user', id=u.id)}}" name="confirm-form" method="POST" >
                 <div class="container-confirm">
                   <h1>Deletar conta</h1>
                   <p class="delete-user-msg">Tem certeza que deseja deletar a conta  <span class="badge bg-light text-dark show-data name-delete"> {{ u.nome }} ?</span></p>
@@ -42,9 +43,13 @@
             </div>
   {% endfor %}
 
-
   </tbody>
 </table>
+
+  <div class="pagination-links">
+      {{ pagination.links }}
+  </div>
+
 
 </div>
 <script src="../static/js/list_user.js"></script>

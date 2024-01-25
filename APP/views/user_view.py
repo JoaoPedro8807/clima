@@ -3,21 +3,24 @@ from flask_login import current_user
 from APP.extensoes.configuration_db import db
 from APP.blueprints.services.api_services import conver_data_to_br, city_is_default
 from APP.blueprints.services.user_services import user_serv
+from APP.blueprints.paginations import paginate
 from APP.entidades import user
 from APP.models import user_model
 from APP.decorators.decorator import admin_required
 from requests.auth import HTTPBasicAuth
 
 def init_rotas_user(app):
-    #### #
-    #     @app.route('/authentication')
-    #     def authentication():
-    #         nome = 'admin'   #current_user.nome
-    #         senha = '123' #current_user.password
-    #         url = "http://127.0.0.1:5000/list_user"
-    #         response =  requests.get(url, auth=HTTPBasicAuth(nome, senha))#####
-
-
+    # tratando dados da api
+    time_to_set_defaultCity = city_is_default.verify_time_to_default_again(city_is_default.get_id_current_cityDefault())
+    current_defaultCity = city_is_default.get_name_current_cityDefault()
+    current_id_default_city = city_is_default.get_id_current_cityDefault()
+                                                                                                                            #### #
+                                                                                                                            #     @app.route('/authentication')
+                                                                                                                            #     def authentication():
+                                                                                                                            #         nome = 'admin'   #current_user.nome
+                                                                                                                            #         senha = '123' #current_user.password
+                                                                                                                            #         url = "http://127.0.0.1:5000/list_user"
+                                                                                                                            #         response =  requests.get(url, auth=HTTPBasicAuth(nome, senha))#####
     @app.route('/list_user')
     @admin_required
     def list_user():
@@ -25,7 +28,6 @@ def init_rotas_user(app):
         for user in users:
             if user.create_at != None:
                 user.create_at = conver_data_to_br.format_data_hora_str(user.create_at)
-
         user = {
             "id": current_user.id,
             "nome": current_user.nome,
@@ -37,10 +39,13 @@ def init_rotas_user(app):
         for role in current_user.roles:
             user['roles'].append(role.nome)
 
-        time_to_set_defaultCity = city_is_default.verify_time_to_default_again(city_is_default.get_id_current_cityDefault())
-        current_defaultCity = city_is_default.get_name_current_cityDefault()
-        current_id_default_city = city_is_default.get_id_current_cityDefault()
-        return render_template('list_user.html', users=users, user=user, time_to_set_defaultCit=time_to_set_defaultCity, current_defaultCity=current_defaultCity, current_id_default_city=current_id_default_city )
+
+        #tratando pagination
+        page = request.args.get('page', 1, type=int)
+        pag = paginate.pagination(itens_list=users, total=len(users), nome='usuários', page=page, per_page=10)
+
+
+        return render_template('list_user.html', users=pag['itens_paginados'], pagination=pag['pagination'], user=user, time_to_set_defaultCit=time_to_set_defaultCity, current_defaultCity=current_defaultCity, current_id_default_city=current_id_default_city )
 
     @app.route('/edit_user/<int:id>/')
     def edit_user(id):

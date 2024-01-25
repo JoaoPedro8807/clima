@@ -46,13 +46,16 @@ def init_rotas_home(app):
             _nome = str(request.form.get('register_name')).strip()
             _email = str(request.form.get('register_email')).strip()
             _senha = str(request.form.get('register_senha')).strip()
+            _isadmin = bool(request.form.get('register_admin'))
             _user = user.Usuario(
                 nome=_nome,
                 email=_email,
                 password=_senha,
-                is_admin=False
+                is_admin=_isadmin
             )
             create_user = user_serv.create_user(_user)
+            if _isadmin:
+                user_serv.add_new_userRole(id_user=create_user.id, id_role=1)
             flash("Usuario cadastrado com sucesso!", category='success')
             return redirect(url_for('index'))
 

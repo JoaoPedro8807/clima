@@ -4,13 +4,17 @@ from APP.models import user_model
 from APP.extensoes.configuration_db import db
 from datetime import datetime, timezone, timedelta
 
-fuso = timezone(timedelta(hours=-3))
+
 def create_user(user):
     if isinstance(user, Usuario):
-        user_bd = user_model.Usuario(nome=user.nome, email=user.email, password=user.password, is_admin=user.is_admin, create_at=datetime.now().astimezone(fuso))
+        dif = timedelta(hours=3)
+        now = datetime.now(timezone.utc)
+        date = now - dif
+        user_bd = user_model.Usuario(nome=user.nome, email=user.email, password=user.password, is_admin=user.is_admin, create_at=date)
         user_bd.criptografar_senha()
         db.session.add(user_bd)
         db.session.commit()
+        return user_bd
 def update_user(old_user, new_user):
     if isinstance(new_user, Usuario):
         old_user.nome = new_user.nome
