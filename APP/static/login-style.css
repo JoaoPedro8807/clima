@@ -74,6 +74,12 @@ body{
     background: var(--cor3);
     box-shadow: 1px 1px;
 }
+.register_link{
+    display: block;
+    width: 100%;
+}
+
+
 .error{
     background-color: antiquewhite;
     color: red;
