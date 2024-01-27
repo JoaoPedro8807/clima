@@ -7,24 +7,20 @@ from APP.blueprints.paginations import paginate
 from APP.entidades import user
 from APP.models import user_model
 from APP.decorators.decorator import admin_required
-from requests.auth import HTTPBasicAuth
+#from requests.auth import HTTPBasicAuth
 
 def init_rotas_user(app):
-    # tratando dados da api
-    time_to_set_defaultCity = city_is_default.verify_time_to_default_again(city_is_default.get_id_current_cityDefault())
-    current_defaultCity = city_is_default.get_name_current_cityDefault()
-    current_id_default_city = city_is_default.get_id_current_cityDefault()
-                                                                                                                            #### #
-                                                                                                                            #     @app.route('/authentication')
-                                                                                                                            #     def authentication():
-                                                                                                                            #         nome = 'admin'   #current_user.nome
-                                                                                                                            #         senha = '123' #current_user.password
-                                                                                                                            #         url = "http://127.0.0.1:5000/list_user"
-                                                                                                                            #         response =  requests.get(url, auth=HTTPBasicAuth(nome, senha))#####
+                                            #### #
+                                            #     @app.route('/authentication')
+                                            #     def authentication():
+                                            #         nome = 'admin'   #current_user.nome
+                                            #         senha = '123' #current_user.password
+                                            #         url = "http://127.0.0.1:5000/list_user"
+                                            #         response =  requests.get(url, auth=HTTPBasicAuth(nome, senha))#####
     @app.route('/list_user')
     @admin_required
     def list_user():
-        users = user_model.Usuario.query.all()
+        users = user_model.Usuario.query.order_by(user_model.Usuario.create_at).all() #.all tranforma já objeto query em lista
         for user in users:
             if user.create_at != None:
                 user.create_at = conver_data_to_br.format_data_hora_str(user.create_at)
@@ -39,18 +35,29 @@ def init_rotas_user(app):
         for role in current_user.roles:
             user['roles'].append(role.nome)
 
-
         #tratando pagination
         page = request.args.get('page', 1, type=int)
         pag = paginate.pagination(itens_list=users, total=len(users), nome='usuários', page=page, per_page=10)
 
+        # tratando dados da api
+        time_to_set_defaultCity = city_is_default.verify_time_to_default_again(
+            city_is_default.get_id_current_cityDefault())
+        current_defaultCity = city_is_default.get_name_current_cityDefault()
+        current_id_default_city = city_is_default.get_id_current_cityDefault()
 
-        return render_template('list_user.html', users=pag['itens_paginados'], pagination=pag['pagination'], user=user, time_to_set_defaultCit=time_to_set_defaultCity, current_defaultCity=current_defaultCity, current_id_default_city=current_id_default_city )
+        return render_template('list_user.html',
+                               users=pag['itens_paginados'],
+                               pagination=pag['pagination'],
+                               user=user,
+                               time_to_set_defaultCit=time_to_set_defaultCity,
+                               current_defaultCity=current_defaultCity,
+                               current_id_default_city=current_id_default_city)
 
     @app.route('/edit_user/<int:id>/')
     def edit_user(id):
         user = user_model.Usuario.query.filter_by(id=id).first()
         return render_template('edit_user.html', user=user)
+
 
 
     @app.route('/update_user', methods=['POST', 'GET'])
@@ -67,7 +74,7 @@ def init_rotas_user(app):
 
             if update['status'] == True:
                 if _admin:
-                    user_serv.add_new_userRole(id_user=old_user.id, id_role=1)#adicionando mais um admin na tabela user_roles!
+                    user_serv.add_new_userRole(id_user=old_user.id, id_role=1) #adicionando mais um admin na tabela user_roles!
                 flash(update['message'])
                 return redirect(url_for('list_user'))
             else:

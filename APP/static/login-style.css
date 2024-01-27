@@ -72,7 +72,7 @@ body{
 
 .send-button:hover{
     background: var(--cor3);
-    box-shadow: 1px;
+    box-shadow: 1px 1px;
 }
 .error{
     background-color: antiquewhite;

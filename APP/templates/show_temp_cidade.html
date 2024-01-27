@@ -12,30 +12,31 @@
 </head>
 <body>
 <section class="section-temp">
-    <h1 class="titulo">Tempo em <span class="badge rounded-pill bg-light text-dark">{{ dados['nome'].title() }}</span></h1>
-    <div class="container">
-         <div class="container-info">
-                    <ul class="container-ul">
+    <div class="cabecalho">
+            <div class="container-info">
                 <div class="container-info-data container-it">
+                    <ul class="container-ul">
                         <li class="container-li"> CIDADE: {{dados['nome']}}</li>
                         <li> ESTADO: {{dados['estado']}}</li>
                         <li> PAIS: {{dados['pais']}}</li>
+                    </ul>
+                </div>
+        </div>
+
+        <h1 class="titulo">Tempo em <span class="badge rounded-pill bg-light text-dark">{{ dados['nome'].title() }}</span></h1>
+
+            <div class="container-date">
+                <div class="container-date-infos container-item">
+                    <ul class="container-date-infos-ul ">
+                        <li class="container-date-infos-li">DATA: {{ data_busc['data']  }}</li>
+                        <li class="container-date-infos-li">HORÁRIO: {{ data_busc['horario']  }} </li>
 
                     </ul>
                 </div>
-
-
-                <div class="container-date">
-                    <div class="container-date-infos container-item">
-                        <ul class="container-date-infos-ul ">
-                            <li class="container-date-infos-li">DATA: {{ data_busc['data']  }}</li>
-                            <li class="container-date-infos-li">HORÁRIO: {{ data_busc['horario']  }} </li>
-
-                        </ul>
-                    </div>
-                </div>
+            </div>
     </div>
-</div>
+
+
 
 <div class="container-datas">
      <div class="container-data">

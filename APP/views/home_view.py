@@ -1,8 +1,9 @@
-from flask import render_template, redirect, url_for, flash, request, current_app, session
+from flask import render_template, redirect, url_for, flash, request, session
 from APP.blueprints.services.user_services import user_serv
+from APP.blueprints.services.api_services import city_is_default, Buscar_por_cidade
 from APP.entidades import user
 from datetime import timedelta
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required
 def init_rotas_home(app):
     @app.route('/')
     def index():
@@ -28,12 +29,37 @@ def init_rotas_home(app):
                     remember=False,
                     duration=timedelta(minutes=60))
 
-                flash(f'{iUser['message']}', category='sucess')
-                return redirect(url_for('menu'))
-
+                if city_is_default.has_default_city():
+                    flash(f'{iUser['message']}', category='sucess')
+                    return redirect(url_for('menu'))
+                else:
+                    flash('Defina uma cidade padrão para prosseguir!')
+                    return redirect(url_for('set_default'))
             else:
                 flash(f'{iUser['message']}', category='error')
                 return redirect(url_for('index'))
+
+    @app.route('/set_default', methods=["POST", "GET"])
+    @login_required
+    def set_default():
+        if request.method == 'POST':
+            city_name = str(request.form['register_city'])
+            citys = Buscar_por_cidade.find_id_city(city_name)
+            if citys:
+                return render_template('set_default.html', citys=citys, len_city=len(citys))
+            else:
+                flash(f'Nenhuma cidade com o nome {city_name} foi encontrada', 'error')
+                return redirect(url_for('set_default'))
+        return render_template('set_default.html')
+
+    @app.route('/define_default/<int:city_id>')
+    def define_default(city_id):
+        define = Buscar_por_cidade.set_city_default(city_id)
+        if define:
+            flash('Cidade definida como padrão com sucesso!')
+            return redirect(url_for('menu'))
+        flash('Algum erro ao definir cidade padrão')
+        return redirect(url_for('set_default'))
 
 
     @app.route('/register', methods=['POST', 'GET'])

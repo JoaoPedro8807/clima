@@ -19,6 +19,18 @@ body{
     color: white;
 }
 
+.cabecalho{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
 .section-temp{
     color: white;
 }

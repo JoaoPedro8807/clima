@@ -1,0 +1,55 @@
+{%  extends 'template.html' %}
+{% block conteudo %}
+<link rel="stylesheet" href="../static/conteudo.css">
+<section class="section-cidade-conteudo">
+    <h1 class="titulo" >DEFININDO CIDADE PADRÃO: </h1>
+        <div class="conteudo">
+            <form action="{{ url_for('set_default') }}" method="POST">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Digite o nome da cidade</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="register_city">
+                <div id="" class="form-text">Para uma pesquisa mais eficiente, digite o nome da cidade completo!</div>
+              </div>
+                  <button type="submit" class="btn service-pesquisar-link ">Pesquisar</button>
+            </form>
+            </div>
+</section>
+
+{% if citys %}
+    <link rel="stylesheet" href="../static/conteudo.css">
+    <section class="section-list-cidades-encontradas">
+        <div class="cidade-list">
+            <h1 class="titulo">Cidades encontradas: {{ len_city }}</h1>
+            <div class="results">
+              <table class="table table-list-cidades">
+                  <thead class="list-item">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="list-item">
+                  {% for city in citys %}
+                    <tr>
+                      <th scope="row"></th>
+                      <td>{{ city['nome'] }}</td>
+                      <td>{{ city['estado'] }}</td>
+                      <td>
+                          <button type="button" class="btn btn-success">
+                            <a style="text-decoration: none; color:black"  href="{{url_for('define_default', city_id=city['id'])}}">DEFINIR COM CIDADE PADRÃO</a>
+                          </button>
+                      </td>
+
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+{% endblock conteudo %}

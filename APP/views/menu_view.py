@@ -1,8 +1,6 @@
 from flask import render_template, session
 from APP.blueprints.services.api_services import city_is_default, conver_data_to_br
 from flask_login import login_required, current_user
-
-
 def init_rotas_menu(app):
     @app.route('/menu')
     @login_required # flask-login decorator

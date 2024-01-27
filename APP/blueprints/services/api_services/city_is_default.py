@@ -33,20 +33,27 @@ def get_id_current_cityDefault():
    id_city = response['locales'][0]
    return (id_city)
 
-def verify_time_to_default_again(id_city):
+def verify_time_to_default_again(id_city=0):
    if verify_city_is_default(id_city):
       r = Buscar_por_cidade.set_city_default(id_city=id_city)
       d = r['detail']
       data_from_api = d[len(d)-45: len(d)-26] #fatiando para pegar apenas a data da resposta do JSON
       api_formatada = conver_data_to_br.format_data_hora_str(data_from_api)
 
-      #pegando a data atual e convertendo em string (para compar dps)
       d_atual = datetime.now()
       atual_formatada = conver_data_to_br.format_data_hora_str(d_atual)
 
-      #método para tirar a diferença entre duas datas (que irão como string), esse método retorna a diferença total em segundos
+      #diferença entre duas datas (que irão como string), return a diferença em segundos
       result  = conver_data_to_br.diference_between_dates_str(date1=atual_formatada, date2=api_formatada)
       dif = 86400 - result.total_seconds()
       res = str(timedelta(seconds=dif)) #str já força o objeto datetime se formatar a uma string com 'h:m:s'
       return res
    return str(timedelta(seconds=0))
+
+
+def has_default_city():
+   URL_REQUEST = f'http://apiadvisor.climatempo.com.br/api-manager/user-token/{API_TOKEN}/locales'
+   request = requests.request("GET", URL_REQUEST)
+   response = json.loads(request.text)
+   return bool(response['locales'][0])
+
