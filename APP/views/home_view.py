@@ -29,15 +29,18 @@ def init_rotas_home(app):
                     remember=False,
                     duration=timedelta(minutes=60))
 
-                if city_is_default.has_default_city():
-                    flash(f'{iUser['message']}', category='sucess')
-                    return redirect(url_for('menu'))
-                else:
+                if not city_is_default.has_default_city() or city_is_default.verify_time_to_default_again() == '0:00:00': #cidade padrão False ou Tempo para definir outra cidade for 0
                     flash('Defina uma cidade padrão para prosseguir!')
                     return redirect(url_for('set_default'))
+                else:
+                    flash(f'{iUser['message']}', category='sucess')
+                    return redirect(url_for('menu'))
+
+
             else:
                 flash(f'{iUser['message']}', category='error')
                 return redirect(url_for('index'))
+
 
     @app.route('/set_default', methods=["POST", "GET"])
     @login_required

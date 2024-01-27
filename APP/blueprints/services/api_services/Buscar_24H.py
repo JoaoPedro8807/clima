@@ -1,10 +1,9 @@
 import requests
 import json
-
-API_KEY = '8f3c01212174df7c569441a5c42a55a7'
+from ..api_services import API_KEY
 
 def  search_all_24_city(city_id):
-    url_request = f'http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/{str(city_id).strip()}/hours/72?token=8f3c01212174df7c569441a5c42a55a7'
+    url_request = f'http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/{str(city_id).strip()}/hours/72?token={(API_KEY)}'
     response = requests.request("GET", url_request)
     r = json.loads(response.text)
     result = [{

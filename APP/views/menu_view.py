@@ -16,7 +16,9 @@ def init_rotas_menu(app):
         for role in current_user.roles:
             user['roles'].append(role.nome)
 
-        time_to_set_defaultCity = city_is_default.verify_time_to_default_again(city_is_default.get_id_current_cityDefault()) #verificar o tempo p/ definir dnv passando o id da cidade default
+        time_to_set_defaultCity = city_is_default.verify_time_to_default_again( #verificar o tempo p/ definir dnv passando o id da cidade default
+            city_is_default.get_id_current_cityDefault())
+
         current_defaultCity = city_is_default.get_name_current_cityDefault()
         current_id_default_city = city_is_default.get_id_current_cityDefault()
         return render_template(
