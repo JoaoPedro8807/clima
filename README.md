@@ -20,8 +20,7 @@ Um APP que busca através da [API  ClimaTempo](https://www.dropbox.com/developer
 
 
 # 🛠️ Limitações da v1.1:   
-- Nessa versão 1.1, ainda não coloquei uma feature para cada usuário obter um Acess Token na API externa, por enquanto, terá que ser colocado um token manualmente nos services que fazem as requisições
-
+- Por conta da API ser gratuita, é permitido pesquisar apenas uma cidade a cada 24h, mas os services e as rotas já conseguem buscar qualquer cidade, caso em algum mommento não exista essa cláusula .
 
 
 ## ✔️ Tecnologias utilizadas

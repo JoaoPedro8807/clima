@@ -19,7 +19,7 @@ def get_temperatura(offset=0, per_page=4):
 
 
 def init_rotas_recursos(app):
-    @app.route('/cidade', methods=['GET', 'POST'])
+    @app.route('/cidade', methods=['GET', 'POST']) #Já pronto para receber qualquer cidade, caso a API deixe  de ser grratuita
     @login_required
     def cidade():
         if request.method == 'POST':
