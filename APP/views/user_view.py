@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, flash, url_for, session
 from flask_login import current_user
 from APP.extensoes.configuration_db import db
 from APP.blueprints.services.api_services import conver_data_to_br, city_is_default
+from APP.blueprints.services.city_services import city_services
 from APP.blueprints.services.user_services import user_serv
 from APP.blueprints.paginations import paginate
 from APP.entidades import user
@@ -40,10 +41,9 @@ def init_rotas_user(app):
         pag = paginate.pagination(itens_list=users, total=len(users), nome='usuários', page=page, per_page=10)
 
         # tratando dados da api
-        time_to_set_defaultCity = city_is_default.verify_time_to_default_again(
-            city_is_default.get_id_current_cityDefault())
+        time_to_set_defaultCity = city_is_default.verify_time_to_default_again()
         current_defaultCity = city_is_default.get_name_current_cityDefault()
-        current_id_default_city = city_is_default.get_id_current_cityDefault()
+        current_id_default_city = city_services.get_id_city_default()
 
         return render_template('list_user.html',
                                users=pag['itens_paginados'],
@@ -54,6 +54,7 @@ def init_rotas_user(app):
                                current_id_default_city=current_id_default_city)
 
     @app.route('/edit_user/<int:id>/')
+    @admin_required
     def edit_user(id):
         user = user_model.Usuario.query.filter_by(id=id).first()
         return render_template('edit_user.html', user=user)
@@ -61,6 +62,7 @@ def init_rotas_user(app):
 
 
     @app.route('/update_user', methods=['POST', 'GET'])
+    @admin_required
     def update_user():
         if request.method == 'POST':
             _nome = request.form.get('register_name')
@@ -83,6 +85,7 @@ def init_rotas_user(app):
 
 
     @app.route('/delete_user/<int:id>', methods=['POST'])
+    @admin_required
     def delete_user(id):
         if request.method == 'POST':
             user = user_model.Usuario.query.filter_by(id=id).first()

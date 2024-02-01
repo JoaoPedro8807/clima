@@ -1,9 +1,12 @@
+import datetime
 from flask import render_template, redirect, url_for, flash, request, session
 from APP.blueprints.services.user_services import user_serv
-from APP.blueprints.services.api_services import city_is_default, Buscar_por_cidade
+from APP.blueprints.services.api_services import Buscar_por_cidade
+from APP.blueprints.services.city_services import city_services
 from APP.entidades import user
 from datetime import timedelta
 from flask_login import login_user, logout_user, login_required
+
 def init_rotas_home(app):
     @app.route('/')
     def index():
@@ -29,16 +32,14 @@ def init_rotas_home(app):
                     remember=False,
                     duration=timedelta(minutes=60))
 
-                if not city_is_default.has_default_city() or city_is_default.verify_time_to_default_again() == '0:00:00': #cidade padrão False ou Tempo para definir outra cidade for 0
+                if city_services.is_possible_set_city():
                     flash('Nenhuma cidade definida, defina uma cidade padrão para prosseguir!')
                     return redirect(url_for('set_default'))
                 else:
-                    flash(f'{iUser['message']}', category='sucess')
+                    flash(f'{iUser["message"]}', category='sucess')
                     return redirect(url_for('menu'))
-
-
             else:
-                flash(f'{iUser['message']}', category='error')
+                flash(f'{iUser["message"]}', category='error')
                 return redirect(url_for('index'))
 
 
@@ -55,14 +56,21 @@ def init_rotas_home(app):
                 return redirect(url_for('set_default'))
         return render_template('set_default.html')
 
+
+
     @app.route('/define_default/<int:city_id>')
     def define_default(city_id):
-        define = Buscar_por_cidade.set_city_default(city_id)
-        if define:
-            flash('Cidade definida como padrão com sucesso!')
-            return redirect(url_for('menu'))
-        flash('Algum erro ao definir cidade padrão')
-        return redirect(url_for('set_default'))
+        if city_services.is_possible_set_city():
+            city_defualt = Buscar_por_cidade.set_city_default(city_id)
+            if city_defualt['status']:
+                city_services.put_default_city(id_city=city_id, data_default=datetime.datetime.now())
+                flash('Cidade definida como padrão com sucesso!')
+                return redirect(url_for('menu'))
+            else:
+                flash(f'Algum erro ao definir cidade padrão: {city_defualt["error"]} ')
+                return redirect(url_for('set_default'))
+
+        return redirect(url_for('menu'))
 
 
     @app.route('/register', methods=['POST', 'GET'])

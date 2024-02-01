@@ -6,7 +6,7 @@
             <form action="{{ url_for('cidade') }}" method="POST">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Digite o nome da cidade</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cidade_input">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cidade_input" required>
                 <div id="" class="form-text">Para uma pesquisa mais eficiente, digite o nome da cidade completo!</div>
               </div>
                   <button type="submit" class="btn service-pesquisar-link ">Pesquisar</button>

@@ -34,7 +34,6 @@ function verify_case(input, caso, elemento){
     }
 }
 
-
 var email_input = document.getElementById('formGroupExampleInput2');
 
 email_input.onfocus = function(){

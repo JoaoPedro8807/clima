@@ -4,7 +4,6 @@ def format_data(data):
     date_format = date.strftime('%d/%m/%y') # 'f'  de format
     return date_format
 
-
 def format_data_hora_str(data_hora):
     if type(data_hora) == str:
         data_h = datetime.strptime(data_hora, '%Y-%m-%d %H:%M:%S')
@@ -14,10 +13,17 @@ def format_data_hora_str(data_hora):
     data_h_string = data_hora.strftime('%d/%m/%Y %H:%M:%S')
     return data_h_string
 
+def form_hora_str(hora):
+    hora_string = hora.strftime('%H:%M:%S')
+    return hora_string
 
-def diference_between_dates_str(date1, date2): #2
-    if type(date1) and type(date2) == str:
-        _date1 = datetime.strptime(date1, '%d/%m/%Y %H:%M:%S')
-        _date2 = datetime.strptime(date2, '%d/%m/%Y %H:%M:%S')
-        tempo = _date1 - _date2
-        return tempo
+def diference_between_dates_str(hora1, hora2):
+    _h1 = form_hora_str(hora1)
+
+    hora_city_dt = datetime.strptime(hora2[0:19], '%Y-%m-%d %H:%M:%S')
+    _h2 = form_hora_str(hora_city_dt)
+
+    h1 = datetime.strptime(_h1, '%H:%M:%S')
+    h2 = datetime.strptime(_h2, '%H:%M:%S')
+    tempo = h2 - h1
+    return tempo

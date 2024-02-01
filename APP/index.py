@@ -22,7 +22,7 @@ configuration_login.init_login_mangager(app)
 #session -> Libary
 configuration_session.init_session(app)
 
-from APP.models import user_model
+from APP.models import user_model, city_model
 
 if __name__ == '__main__':
     app.run(debug=True)

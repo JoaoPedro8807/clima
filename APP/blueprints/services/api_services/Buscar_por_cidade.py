@@ -25,8 +25,18 @@ def set_city_default(id_city): #1 mudança por dia.
     payload = f'localeId[]={str(id_city).strip()}'
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     response = requests.request("PUT", url_request, headers=headers, data=payload)
-    r = json.loads(response.text)
-    return r
+    if response.status_code == 200:
+        return {
+            "status": True,
+            "error": None
+        }
+    else:
+        erro = json.loads(response.text)
+        return {
+            "status": False,
+            "error": erro['detail']
+        }
+
 
 
 def find_data_locale(id_city): #pesquisar dados de uma ciddade já autorizada na api

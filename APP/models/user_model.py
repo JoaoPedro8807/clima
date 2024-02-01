@@ -24,7 +24,6 @@ class Usuario(UserMixin, db.Model): #UserMixin biblioteca para o flask_login rec
                     .filter(Role.slug == role)
                     .count() == 1
                     )
-
     def criptografar_senha(self):
         self.password = pbkdf2_sha256.hash(self.password)
 
@@ -40,14 +39,13 @@ class Role(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome = db.Column(db.String(50), nullable=False)
-    slug = db.Column(db.String(50), nullable=False, unique=True)
+    slug = db.Column(db.String(50), nullable=True, unique=True)
 
     users = db.relationship('Usuario', secondary='user_roles', back_populates='roles')
 
 
 class UserRole(db.Model):
     __tablename__ = 'user_roles'
-
 
     user_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), primary_key=True)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), primary_key=True)
