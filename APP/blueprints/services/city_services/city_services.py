@@ -26,7 +26,7 @@ def get_date_city_default():
 def is_possible_set_city():
     now = datetime.now()
     str_city = str(get_date_city_default())
-    data_city = datetime.strptime(str_city, "%Y-%m-%d %H:%M:%S+00:00")
+    data_city = datetime.strptime(str_city, "%Y-%m-%d %H:%M:%S.%f+00:00")
     dif = (now - data_city).total_seconds()
     return dif >= 86400
 
