@@ -16,11 +16,11 @@ Um APP que busca através da [API  ClimaTempo](https://www.dropbox.com/developer
 
 ### - ` 3`: Pesquisar a previsão para os próximos 3 dias de uma determinada região do Brasil (está região não precisa ser padrão, podemos pesquisar sem limitações)
 
-### - `EXTRA:`: O APP também conta com login e autenticação de usuários, e administradores (que podemos editar e excluir qualquer usuário).
+### - `EXTRA:`: O APP também conta com login e autenticação de usuários e administradores (que podemos editar e excluir qualquer usuário).
 
 
 # 🛠️ Limitações da v1.2:   
-- Por conta da API ser gratuita, é permitido pesquisar apenas uma cidade a cada 24h, mas os services e as rotas já conseguem buscar qualquer cidade, caso em algum mommento não exista essa cláusula .
+- Por conta da API ser gratuita, é permitido pesquisar apenas por uma cidade a cada 24h, mas os services e as rotas já conseguem buscar qualquer cidade, caso a API não seja mais gratuita.
 
 
 ## ✔️ Tecnologias utilizadas

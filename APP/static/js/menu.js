@@ -19,10 +19,10 @@ function timer(){
     segundo--
     if (segundo == 0){
         minuto--
-        segundo = 60
+        segundo = 59
         if(minuto == 0){
             hora--
-            minuto = 60
+            minuto = 59
         }
     }
     time_box.innerHTML = `${hora}:${minuto}:${segundo}`
